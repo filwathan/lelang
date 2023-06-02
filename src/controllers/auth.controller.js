@@ -2,6 +2,7 @@ const userModel = require('../models/users.model')
 const jwt = require('jsonwebtoken')
 
 exports.login = (req, res) => {
+	console.log('login')
     userModel.getUserByEmail(req.body.email, (err, {rows})=>{        
         if(rows.length){ 
             const [user] = rows
