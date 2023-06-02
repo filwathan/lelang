@@ -14,7 +14,7 @@ app.use('/', require('./src/routes'))
 app.get('/', (req, res) =>{
   return res.status(200).json({
     success: true,
-    message: "Backend is running well"
+    message: "Backend is running well by yogi"
   })
 })
 
