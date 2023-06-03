@@ -11,8 +11,16 @@ exports.getUserByEmail = (email, callback) => {
     db.query(sql, value, callback)
 }
 
-exports.createUser = (data, callback) => {
-    const sql = `INSERT INTO "users" ("email", "password", "phone") VALUES ($1, $2, $3) RETURNING *`
+exports.createUser = (data, callback = () => {}) => {
+    const sql = `INSERT INTO "users" ("email", "password", "phone") VALUES ($1, $2, $3) RETURNING id, email`
     const value =[data.email, data.password, data.phone]
-    db.query(sql, value, callback)
+    db.query(sql, value, function (err, result) {
+        if(result) {
+            callback(null, result);
+        }else{
+            // console.log('error here')
+            callback(true, {});
+        }
+       
+    })
 }

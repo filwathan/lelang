@@ -33,13 +33,23 @@ exports.login = (req, res) => {
 exports.register = (req, res) => {
     if(req.body.email && req.body.password && req.body.phone){
         userModel.createUser(req.body, (err, {rows}) =>{
-            const user = rows
-            const token = jwt.sign({id: user.id}, process.env.BACKEND_SECRET)
-            return res.status(200).json({
-                succes: true,
-                message: 'Create New Account is Success',
-                results: {token}
-            })
+            // console.log(rows)
+            if(!err){
+                const user = rows
+                const token = jwt.sign({id: user.id}, process.env.BACKEND_SECRET)
+                return res.status(200).json({
+                    succes: true,
+                    message: 'Create New Account is Success',
+                    results: {token}
+                })
+            }else{
+                return res.status(401).json({
+                    false: true,
+                    message: 'Email already registered',
+                })
+            }
+
+
         })
     }
     else{
