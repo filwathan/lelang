@@ -1,7 +1,12 @@
 const modelUsers = require('../models/users.model')
 
 exports.getAllUser = (req, res) => {
-    modelUsers.getAllUser((err, data) => {
+    console.log('reqqq', req.id)
+    console.log('reqqq', req.email)
+    console.log('reqqq', req.username)
+    console.log('reqqq', req.is_active)
+
+    modelUsers.getAllUser(req.id, (err, data) => {
         if(err){
             return res.status(400).json({
                 success: false,
