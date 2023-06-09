@@ -13,6 +13,7 @@ exports.verifyToken = (req, res, next) => {
         req.username = decoded.username;
         req.email = decoded.email;
         req.is_active = decoded.is_active;
+
         next();
     })
 }

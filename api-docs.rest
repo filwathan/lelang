@@ -11,7 +11,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-	"email": "yogi_su@email.com",
+	"email": "yogis_su@email.com",
 	"password": "123456"
 }
 
@@ -24,4 +24,16 @@ DELETE http://localhost:5000/auth/logout
 ###
 # pengujian token
 GET http://localhost:5000/users/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5IiwiZW1haWwiOiJ5b2dpX3N1QGVtYWlsLmNvbSIsInVzZXJuYW1lIjoieW9naV9zdSIsImlzX2FjdGl2ZSI6MCwiaWF0IjoxNjg1ODIwMjc5LCJleHAiOjE2ODU4MjAzMDl9.V74qE_yGgUouPSGXzjgUnZCLIFGen4TJv_Z8m304Qz4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4IiwiZW1haWwiOiJ5b2dpc19zdUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6InlvZ2lzX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODYzMjA1MzYsImV4cCI6MTY4NjMyMDU2Nn0.DuSObBbK6nPXZ9lncN6jPdRQa--M0rE49LfjLFrhjIo
+
+###
+#get all categories
+GET http://localhost:5000/categories/
+
+###
+#get all sub categories
+GET http://localhost:5000/subCategories/
+
+###
+#get sub categories by category code
+GET http://localhost:5000/subCategories/tes01

@@ -29,6 +29,7 @@ exports.register = async (req, res) => {
                         is_active: user.is_active
                     }, 
                     process.env.ACCESS_TOKEN_SECRET)
+                    console.log(token)
                 
                 return res.status(200).json({
                     succes: true,
@@ -70,7 +71,7 @@ exports.login = (req, res) => {
                     }, 
                     process.env.ACCESS_TOKEN_SECRET, 
                     {
-                        expiresIn: '30s'
+                        expiresIn: '60s'
                     })
 
                 const refreshToken = jwt.sign(
