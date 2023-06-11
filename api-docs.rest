@@ -37,3 +37,26 @@ GET http://localhost:5000/subCategories/
 ###
 #get sub categories by category code
 GET http://localhost:5000/subCategories/tes01
+
+###
+#insert auction post
+POST http://localhost:5000/auction/auctionPost/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4IiwiZW1haWwiOiJ5b2dpc19zdUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6InlvZ2lzX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODY0OTI1ODIsImV4cCI6MTY4NjUwMjU4Mn0.g2PhIG60zfbIW4hPUSpn1IXya4yqMlHHdi5NDFzH7Is
+
+{
+	"auctionPostCode": null,
+	"title": "uji coba post pertama", 
+	"subCategoryCode": "sct002",
+	"images": null,
+	"videos": null,
+	"condition": "Second",
+	"initialPrice": 100000,
+	"multiplePrice": 20000,
+	"description": "tes keterangan atau description",
+	"status": null,
+	"startDate": null,
+	"endDate": null,
+	"tags": "lelang",
+	"createdBy": null
+}
