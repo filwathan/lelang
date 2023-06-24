@@ -13,8 +13,8 @@ exports.getUserByEmail = (email, callback) => {
 }
 
 exports.createUser = (data, callback = () => {}) => {
-    const sql = `INSERT INTO "users" (username, email, password) VALUES ($1, $2, $3) RETURNING id, email`
-    const value =[data.username, data.email, data.password]
+    const sql = `INSERT INTO "users" (username, email, password, user_code) VALUES ($1, $2, $3, $4) RETURNING id, email, user_code`
+    const value =[data.username, data.email, data.password, data.userCode]
     db.query(sql, value, function (err, result) {
         if(result) {
             callback(null, result);
@@ -44,3 +44,10 @@ exports.deleteRefreshToken = (id, callback) => {
     const value = [id]
     db.query(sql, value, callback)
 } 
+
+exports.getUserCode = (callback) => {
+    const sql = `select user_code from users order by id desc limit 1`
+    // console.log(callback)
+    db.query(sql, callback) ;
+
+}
