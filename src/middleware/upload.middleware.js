@@ -62,8 +62,6 @@ const uploadMiddleware = upload.array('files')
 
 module.exports =  (req, res , next) =>{
   uploadMiddleware(req, res, (err)=>{
-    console.log('hit middleware')
-    console.log('++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++')
     const files = req.files
     const filesImages = []
     const filesVideos = []
@@ -81,9 +79,6 @@ module.exports =  (req, res , next) =>{
 
     req.body.images = filesImages
     req.body.videos = filesVideos
-    
-    console.log('req.body.images', req.body.images)
-    console.log('req.body.videos', req.body.videos)
 
     console.log('error', err)
     if(err){
