@@ -2,8 +2,6 @@ const auctionPostModel = require('../models/auctionPost.model')
 const jwt = require("jsonwebtoken");
 
 exports.createAuctionPost = async (req, res) => {
-    console.log('======================================')
-    console.log(req.body)
     // console.log('hit controller req.file', req.file)
     // console.log('hit controller req.files', req.files)
     // req.body.images = req.files
