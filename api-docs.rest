@@ -11,7 +11,7 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-	"email": "yogis_su@email.com",
+	"email": "laatsasd_su@wcdqedmail.com",
 	"password": "123456"
 }
 
@@ -24,7 +24,7 @@ DELETE http://localhost:5000/auth/logout
 ###
 # pengujian token
 GET http://localhost:5000/users/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4IiwiZW1haWwiOiJ5b2dpc19zdUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6InlvZ2lzX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODYzMjA1MzYsImV4cCI6MTY4NjMyMDU2Nn0.DuSObBbK6nPXZ9lncN6jPdRQa--M0rE49LfjLFrhjIo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4IiwiZW1haWwiOiJ5b2dpc19zdUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6InlvZ2lzX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODcyNDExNzIsImV4cCI6MTY4NzI0MTIzMn0.oNsElByvQTFUhTkIYwYOmum3T7DqMQSWrOo9b9auiuM
 
 ###
 #get all categories
@@ -42,11 +42,11 @@ GET http://localhost:5000/subCategories/tes01
 #insert auction post
 POST http://localhost:5000/auction/auctionPost/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4IiwiZW1haWwiOiJ5b2dpc19zdUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6InlvZ2lzX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODY0OTI1ODIsImV4cCI6MTY4NjUwMjU4Mn0.g2PhIG60zfbIW4hPUSpn1IXya4yqMlHHdi5NDFzH7Is
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MCIsImVtYWlsIjoibGFhdHNhc2Rfc3VAd2NkcWVkbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxhYXRzYXNkX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODc2MjY1ODYsImV4cCI6MTY4NzYyNjY0Nn0.WNM9gSN74u8wHqUvAh6PZF8W538LNtBjDvvvHq3JTbY
 
 {
 	"auctionPostCode": null,
-	"title": "uji coba post pertama", 
+	"title": "uji coba post kedua agam", 
 	"subCategoryCode": "sct002",
 	"images": null,
 	"videos": null,

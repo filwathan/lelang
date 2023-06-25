@@ -6,6 +6,11 @@ exports.getAllCategories = (callback) => {
     db.query(sql, callback) ;
 }
 
+exports.getAllCategoriesCode = (callback) => {
+    const sql = `SELECT "category_code" FROM "categories" WHERE "is_deleted" = 0 ORDER BY "category_code" ASC`;
+    db.query(sql, callback) ;
+}
+
 exports.createCategories = (data, callback) => {
     const sql = `INSERT INTO "categories" ("category_code", "category_name", "category_desc") VALUES ($1, $2, $3, $4, $5) RETURNING *`;
     const value = [data.categoryCode, data.categoryName, data.categoryDesc];

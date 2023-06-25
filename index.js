@@ -10,6 +10,9 @@ app.use(express.json())
 app.use(express.urlencoded({extended: false}))
 app.use(cors())
 
+//route static
+app.use('/assets/uploads', express.static('uploads/'))
+
 app.use('/', require('./src/routes'))
 
 

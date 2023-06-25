@@ -71,7 +71,7 @@ exports.login = (req, res) => {
                     }, 
                     process.env.ACCESS_TOKEN_SECRET, 
                     {
-                        expiresIn: '60s'
+                        expiresIn: '1d'
                     })
 
                 const refreshToken = jwt.sign(
