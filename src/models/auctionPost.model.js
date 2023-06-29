@@ -37,3 +37,10 @@ exports.createAuctionPost = (data, callback) => {
     ];
     db.query(sql, value, callback) 
 }
+
+exports.getAuctionPostCode = (callback) => {
+    const sql = `select auction_post_code from auction_post order by id desc limit 1`
+    // console.log(callback)
+    db.query(sql, callback) ;
+
+}
