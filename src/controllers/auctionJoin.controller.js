@@ -1,59 +1,49 @@
-const auctionPostModel = require('../models/auctionPost.model')
+const auctionJoinModel = require('../models/auctionJoin.model')
 const jwt = require("jsonwebtoken");
 
-exports.createAuctionPost = async (req, res) => {
-  
+exports.joinAuction = async (req, res) => {
+    
     try{
-        if( req.username &&
-            req.body.title && 
-            req.body.subCategoryCode &&
-            // req.body.images &&
-            req.body.condition &&
-            req.body.initialPrice &&
-            req.body.multiplePrice &&
-            req.body.description
-            // req.body.startDate &&
-            // req.body.endDate &&
-            // req.body.createdAt 
+        if( req.body.auctionPostCode 
+            // &&
+            // req.body.createdAt
             ){
                 
-            auctionPostModel.getAuctionPostCode((err, {rows}) =>{
-                let [code] = rows
-                if(!err && code !== undefined){
-                    let getCode = generateId(code.auction_post_code)
 
-                    const data = {
-                        auctionPostCode: getCode,
-                        title: req.body.title, 
-                        subCategoryCode: req.body.subCategoryCode,
-                        images: req.body.images,
-                        videos: req.body.videos,
-                        condition: req.body.condition,
-                        initialPrice: req.body.initialPrice,
-                        multiplePrice: req.body.multiplePrice,
-                        description: req.body.description,
-                        status: req.body.status || null,
-                        startDate: req.body.startDate || null,
-                        endDate: req.body.endDate || null,
-                        tags: req.body.tags,
-                        // createdAt: req.body.createdAt,
-                        createdBy: req.username
+            auctionJoinModel.getParticipantNo((err, {rows}) =>{
+                        console.log("err2", err)
+                        console.log("rows", rows)
+                if(!err){
+                    let [code] = rows
+                    let getCode
+                    if(rows.length > 0){
+                        getCode = generateId(code.participant_no)
+                    }else{
+                        getCode = generateId('')
                     }
 
-                    auctionPostModel.createAuctionPost( data, (err, callback) =>{
-                        // console.log("callback", callback)
-                        console.log('err when create auction');
+                    const data = {
+                        participantNo: getCode,
+                        auctionPostCode: req.body.auctionPostCode, 
+                        createdAt: req.body.createdAt,
+                        createdBy: req.username
+                        
+                    }
+
+                    auctionJoinModel.createAuctionParticipant( data, (err, callback) =>{
+                        console.log("callback", callback)
+                        console.log("err", err)
+
                         if(!err){
                             return res.status(200).json({
                                 succes: true,
-                                message: 'Create Auction is Success',
+                                message: 'Join Auction is Success',
                                 results: 'Berhasil'
                             })
                         }else{
-                            console.log('Email already', err)
                             return res.status(401).json({
                                 false: true,
-                                message: 'Create Auction is Failed',
+                                message: 'Join Auction is Failed',
                             })
                         }
 
@@ -61,17 +51,16 @@ exports.createAuctionPost = async (req, res) => {
                 }else{
                     return res.status(401).json({
                         false: true,
-                        message: 'Something wrong when post auction',
+                        message: 'Something wrong when join auction',
                     })
                 }
 
             })
         }
         else{
-            // console.log('failed create, cant empety username, title, subCategoryCode, condition, initialPrice, multiplePrice, description')
             return res.status(401).json({
                 succes: false,
-                message: 'failed (create new auction)'
+                message: 'failed (join auction)'
             })
         }
     }catch(e){
@@ -79,11 +68,11 @@ exports.createAuctionPost = async (req, res) => {
     }
 }
 
-function generateId(id) {
+function generateId(id = '') {
     let finalId = ''
 
     if (!id) {
-        let alpha_series = "APC";
+        let alpha_series = "JA";
         let year_now = new Date().getFullYear().toString();
         year_now = year_now.slice(-2);
         let month_now = new Date().getMonth() + 1;

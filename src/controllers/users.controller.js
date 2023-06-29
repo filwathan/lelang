@@ -1,10 +1,6 @@
 const modelUsers = require('../models/users.model')
 
 exports.getAllUser = (req, res) => {
-    console.log('reqqq', req.id)
-    console.log('reqqq', req.email)
-    console.log('reqqq', req.username)
-    console.log('reqqq', req.is_active)
 
     modelUsers.getAllUser(req.id, (err, data) => {
         if(err){

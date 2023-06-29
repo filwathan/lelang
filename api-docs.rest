@@ -57,15 +57,15 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MyIsImVtY
 	"endDate": null,
 	"tags": "lelang",
 	"createdBy": null,
-	"insert_date": ""
+	"createdAt": ""
 }
 
 ###
-POST http://localhost:5001/auction_member/register/
+POST http://localhost:5001/auction/joinAuction/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MCIsImVtYWlsIjoibGFhdHNhc2Rfc3VAd2NkcWVkbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxhYXRzYXNkX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODc2MjY1ODYsImV4cCI6MTY4NzYyNjY0Nn0.WNM9gSN74u8wHqUvAh6PZF8W538LNtBjDvvvHq3JTbY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MyIsImVtYWlsIjoieW9naXNfc3VAZW1haWwuY29tIiwidXNlcm5hbWUiOiJ5b2dpc19zdSIsImlzX2FjdGl2ZSI6MCwiaWF0IjoxNjg4MDUzNTE4LCJleHAiOjE2ODgxMzk5MTh9.rg4u1WzHYfOWWsWRwR6_lzFd_WOkmQ7q5I29_lgLCm8
 
 {
-	"auction_post_code": "ACP2302110001",
-	"insert_date": ""
+	"auctionPostCode": "ACP2302110001",
+	"createdAt": null
 }
