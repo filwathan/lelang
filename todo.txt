@@ -21,3 +21,4 @@ PR
 - sub_category_code auto generate
 - auction_post_code tbl auction_post (DONE)
 - participant_no tbl auction_participants (DONE)
+- auction_bidding (DONE)

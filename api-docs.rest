@@ -69,3 +69,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MyIsImVtY
 	"auctionPostCode": "ACP2302110001",
 	"createdAt": null
 }
+
+###
+POST http://localhost:5001/auction/bidAuction/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MyIsImVtYWlsIjoieW9naXNfc3VAZW1haWwuY29tIiwidXNlcm5hbWUiOiJ5b2dpc19zdSIsImlzX2FjdGl2ZSI6MCwiaWF0IjoxNjg4MDUzNTE4LCJleHAiOjE2ODgxMzk5MTh9.rg4u1WzHYfOWWsWRwR6_lzFd_WOkmQ7q5I29_lgLCm8
+
+{
+	"bidPrice" : 120000,
+	"auctionParticipantNo": "ACP2302110001",
+	"createdAt": null
+}

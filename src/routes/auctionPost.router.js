@@ -4,6 +4,8 @@ const uploadMiddleware = require('../middleware/upload.middleware')
 
 const {createAuctionPost} = require('../controllers/auctionPost.controller');
 const {joinAuction} = require('../controllers/auctionJoin.controller');
+const {bidAuction} = require('../controllers/auctionBid.controller');
+
 
 auctionPostRouter.post('/auctionPost', verifyToken, uploadMiddleware, createAuctionPost);
 // auctionPostRouter.post('/', createAuctionPost);
@@ -11,5 +13,7 @@ auctionPostRouter.post('/auctionPost', verifyToken, uploadMiddleware, createAuct
 // auctionPostRouter.patch('/delete/:id', deleteCategories);
 
 auctionPostRouter.post('/joinAuction', verifyToken, joinAuction);
+auctionPostRouter.post('/bidAuction', verifyToken, bidAuction);
+
 
 module.exports = auctionPostRouter;
