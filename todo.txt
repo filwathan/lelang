@@ -19,5 +19,5 @@ PR
 - tbl user_contact
 - category_code auto generate
 - sub_category_code auto generate
-- auction_post_code tbl auction_post
+- auction_post_code tbl auction_post (DONE)
 - participant_no tbl auction_participants 
