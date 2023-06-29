@@ -1,4 +1,4 @@
-POST http://localhost:5000/auth/register
+POST http://localhost:5001/auth/register
 Content-Type: application/json
 
 {
@@ -7,40 +7,40 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:5000/auth/login
+POST http://localhost:5001/auth/login
 Content-Type: application/json
 
 {
-	"email": "laatsasd_su@wcdqedmail.com",
+	"email": "yogis_su@email.com",
 	"password": "123456"
 }
 
 ###
-GET http://localhost:5000/auth/refresh_token
+GET http://localhost:5001/auth/refresh_token
 
 ### 
-DELETE http://localhost:5000/auth/logout
+DELETE http://localhost:5001/auth/logout
 
 ###
 # pengujian token
-GET http://localhost:5000/users/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijk4IiwiZW1haWwiOiJ5b2dpc19zdUBlbWFpbC5jb20iLCJ1c2VybmFtZSI6InlvZ2lzX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODcyNDExNzIsImV4cCI6MTY4NzI0MTIzMn0.oNsElByvQTFUhTkIYwYOmum3T7DqMQSWrOo9b9auiuM
+GET http://localhost:5001/users/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MyIsImVtYWlsIjoieW9naXNfc3VAZW1haWwuY29tIiwidXNlcm5hbWUiOiJ5b2dpc19zdSIsImlzX2FjdGl2ZSI6MCwiaWF0IjoxNjg3OTY5NTU4LCJleHAiOjE2ODgwNTk1NTh9.QLDevXJyi6t4NDFswAlQcFDfZ7Ubc30NYqCD2wPrSl4
 
 ###
 #get all categories
-GET http://localhost:5000/categories/
+GET http://localhost:5001/categories/
 
 ###
 #get all sub categories
-GET http://localhost:5000/subCategories/
+GET http://localhost:5001/subCategories/
 
 ###
 #get sub categories by category code
-GET http://localhost:5000/subCategories/tes01
+GET http://localhost:5001/subCategories/tes01
 
 ###
 #insert auction post
-POST http://localhost:5000/auction/auctionPost/
+POST http://localhost:5001/auction/auctionPost/
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MCIsImVtYWlsIjoibGFhdHNhc2Rfc3VAd2NkcWVkbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxhYXRzYXNkX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODc2MjY1ODYsImV4cCI6MTY4NzYyNjY0Nn0.WNM9gSN74u8wHqUvAh6PZF8W538LNtBjDvvvHq3JTbY
 
@@ -58,5 +58,16 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MCIsImVtY
 	"startDate": null,
 	"endDate": null,
 	"tags": "lelang",
-	"createdBy": null
+	"createdBy": null,
+	"insert_date": ""
+}
+
+###
+POST http://localhost:5001/auction_member/register/
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MCIsImVtYWlsIjoibGFhdHNhc2Rfc3VAd2NkcWVkbWFpbC5jb20iLCJ1c2VybmFtZSI6ImxhYXRzYXNkX3N1IiwiaXNfYWN0aXZlIjowLCJpYXQiOjE2ODc2MjY1ODYsImV4cCI6MTY4NzYyNjY0Nn0.WNM9gSN74u8wHqUvAh6PZF8W538LNtBjDvvvHq3JTbY
+
+{
+	"auction_post_code": "ACP2302110001",
+	"insert_date": ""
 }
