@@ -1,5 +1,6 @@
 const auctionPostModel = require('../models/auctionPost.model')
 const jwt = require("jsonwebtoken");
+const filter = require('../helpers/filter.helper')
 
 exports.createAuctionPost = async (req, res) => {
   
@@ -118,4 +119,27 @@ function addLeadingZeros(id) {
     } else {
         return id;
     }
+}
+
+exports.listAllAuctionPost = (req, res) => {
+    filter(req.query, auctionPostModel.getCountAuctionPostCode, res, (filter, pageInfo)=>{
+        auctionPostModel.getAllAuctionPostCode(filter, (err, data)=>{
+          if (err){
+            console.log(err)
+            return res.status(500).json({
+                succes: false,
+                message: 'Error Controller List All Auction Post'
+            })
+          }
+          else{
+            return res.status(200).json({
+              succes: true,
+              message: 'you get AuctionPostCode',
+              pageInfo,
+              results: data.rows
+            })
+          }
+        })
+      })
+    
 }
