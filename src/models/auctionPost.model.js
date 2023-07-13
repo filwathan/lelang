@@ -46,7 +46,7 @@ exports.getAuctionPostCode = (callback) => {
 }
 
 exports.getCountAuctionPostCode = (filter, callback) =>{
-    const sql = `SELECT COUNT("title") AS "totalData" FROM "auction_post" WHERE "title" LIKE $1`
+    const sql = `SELECT COUNT("${filter.orderBy}") AS "totalData" FROM "auction_post" WHERE "${filter.orderBy}" LIKE $1`
     const value = [`%${filter.search}%`]
     db.query(sql, value, callback)
 }
@@ -67,7 +67,7 @@ exports.getAllAuctionPostCode = (filter, callback) => {
     "tags",
     "created_by"
     FROM "auction_post" 
-    WHERE "title" LIKE $3
+    WHERE "${filter.orderBy}" LIKE $3
     ORDER BY "title" ${filter.sort}
     LIMIT $1
     OFFSET $2`

@@ -1,6 +1,7 @@
 const auctionPostModel = require('../models/auctionPost.model')
 const jwt = require("jsonwebtoken");
-const filter = require('../helpers/filter.helper')
+const filter = require('../helpers/filter.helper');
+const e = require('express');
 
 exports.createAuctionPost = async (req, res) => {
   
@@ -43,7 +44,7 @@ exports.createAuctionPost = async (req, res) => {
 
                     auctionPostModel.createAuctionPost( data, (err, callback) =>{
                         // console.log("callback", callback)
-                        console.log('err when create auction');
+                        // console.log('err when create auction');
                         if(!err){
                             return res.status(200).json({
                                 succes: true,
@@ -51,7 +52,7 @@ exports.createAuctionPost = async (req, res) => {
                                 results: 'Berhasil'
                             })
                         }else{
-                            console.log('Email already', err)
+                            // console.log('Email already', err)
                             return res.status(401).json({
                                 false: true,
                                 message: 'Create Auction is Failed',
@@ -122,10 +123,13 @@ function addLeadingZeros(id) {
 }
 
 exports.listAllAuctionPost = (req, res) => {
-    filter(req.query, auctionPostModel.getCountAuctionPostCode, res, (filter, pageInfo)=>{
+   
+    // filter(req.query, auctionPostModel.getCountAuctionPostCode, res, (filter, pageInfo)=>{
+    filter(req.params, auctionPostModel.getCountAuctionPostCode, res, (filter, pageInfo)=>{
+
         auctionPostModel.getAllAuctionPostCode(filter, (err, data)=>{
           if (err){
-            console.log(err)
+            // console.log(err)
             return res.status(500).json({
                 succes: false,
                 message: 'Error Controller List All Auction Post'

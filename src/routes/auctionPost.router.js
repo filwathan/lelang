@@ -7,7 +7,7 @@ const {joinAuction} = require('../controllers/auctionJoin.controller');
 const {bidAuction} = require('../controllers/auctionBid.controller');
 
 
-auctionPostRouter.get('/getLissAllAuctionPost', verifyToken, listAllAuctionPost);
+auctionPostRouter.get('/auctionList/:search/:orderBy/:sort/:page/:limit', verifyToken, listAllAuctionPost);
 auctionPostRouter.post('/auctionPost', verifyToken, uploadMiddleware, createAuctionPost);
 // auctionPostRouter.post('/', createAuctionPost);
 // auctionPostRouter.patch('/:id', updateCategories);

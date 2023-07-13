@@ -1,20 +1,23 @@
 filter = (data, countData, res, callback) => {
-    data.limit = data.limit || 5;
-    data.page = data.page || 1;
-    data.search = data.search || ''
+    data.search = data.search !== '*' ? data.search : '';
+    data.orderBy = data.orderBy !== '*' ? data.orderBy : 'title';
     data.sort = data.sort || 'ASC'
+    data.page = data.page || 1;
+    data.limit = data.limit || 10;
 
     const params = {
-        limit: data.limit,
-        offset: (data.page - 1) * data.limit,
         search: data.search,
+        orderBy: data.orderBy,
         sort: data.sort,
+        page: data.page,
+        limit: data.limit,
+        // offset: (data.page - 1) * data.limit,
     }
     
     const pageInfo = {
         page: data.page,
     }
-    console.log(params)
+    // console.log(params)
 
     countData(params, (err, results) =>{
         if (err){

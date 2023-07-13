@@ -80,3 +80,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MyIsImVtY
 	"auctionParticipantNo": "ACP2302110001",
 	"createdAt": null
 }
+
+###
+# pengujian token
+GET http://localhost:5001/auction/auctionList/description13/description/asc/1/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE5MyIsImVtYWlsIjoieW9naXNfc3VAZW1haWwuY29tIiwidXNlcm5hbWUiOiJ5b2dpc19zdSIsImlzX2FjdGl2ZSI6MCwiaWF0IjoxNjg5MTY3MjYxLCJleHAiOjE2ODkyNTM2NjF9.IGZoM4PKNMmqogW6XmVTNE8WNfauOyGE0dmce2DR3-0
