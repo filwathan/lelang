@@ -4,47 +4,50 @@ const bcrypt = require('bcrypt')
 const { json } = require('body-parser')
 
 exports.register = async (req, res) => {
-    if(req.body.email && req.body.password){
+    if(req.body.email && req.body.password && req.body.fullName){
         //generate username
         const username = req.body.email.split("@");
-
         //generate password
         const salt = await bcrypt.genSalt()
         const hashPasssword = await bcrypt.hash(req.body.password, salt)
-
         userModel.getUserCode((err, {rows}) =>{
+
             let [user] = rows
             if(!err && user !== undefined){
                 let getId = generateId(user.user_code)
                 const data = {
-                    email: req.body.email,
+                    userCode: getId,
                     username: username[0],
-                    password: hashPasssword,
-                    userCode: getId
+                    fullName: req.body.fullName,
+                    email: req.body.email,
+                    password: hashPasssword
                 }
 
                 userModel.createUser( data, (err, {rows}) =>{
-                    console.log(err)
+                    console.log('err' , err)
                     if(!err){
                         const user = rows
-                        const token = jwt.sign(
+                        const accessToken = jwt.sign(
                             {
-                                email: user.email, 
-                                username:user.username, 
+                                id:user.id,
                                 userCode:user.user_code,
+                                username:user.username, 
+                                fullName:user.full_name,
+                                profilePicture:user.profile_picture,
+                                email: user.email, 
                                 is_active: user.is_active,
                             }, 
                             process.env.ACCESS_TOKEN_SECRET)
                         
                         return res.status(200).json({
                             succes: true,
-                            message: 'Create New Account is Success',
-                            results: {token}
+                            message: 'Create New Account is Successfully',
+                            results: {accessToken}
                         })
                     }else{
                         return res.status(401).json({
                             false: true,
-                            message: 'Email already registered, please contact administrator',
+                            message: 'Email already registered',
                         })
                     }
     
@@ -52,7 +55,7 @@ exports.register = async (req, res) => {
             }else{
                 return res.status(401).json({
                     false: true,
-                    message: 'Something wrong when registration',
+                    message: 'Something wrong',
                 })
             }
         })
@@ -77,9 +80,12 @@ exports.login = (req, res) => {
                 const accessToken = jwt.sign(
                     {
                         id: user.id, 
-                        email: user.email, 
+                        userCode:user.user_code,
                         username:user.username, 
-                        is_active: user.is_active
+                        fullName:user.full_name,
+                        profilePicture:user.profile_picture,
+                        email: user.email, 
+                        is_active: user.is_active,
                     }, 
                     process.env.ACCESS_TOKEN_SECRET, 
                     {
@@ -89,9 +95,12 @@ exports.login = (req, res) => {
                 const refreshToken = jwt.sign(
                     {
                         id: user.id, 
-                        email: user.email, 
+                        userCode:user.user_code,
                         username:user.username, 
-                        is_active: user.is_active
+                        fullName:user.full_name,
+                        profilePicture:user.profile_picture,
+                        email: user.email, 
+                        is_active: user.is_active,
                     }, 
                     process.env.REFRESH_TOKEN_SECRET, 
                     {
@@ -117,14 +126,14 @@ exports.login = (req, res) => {
             else {
                 return res.status(401).json({
                     succes: false,
-                    message: 'email or password wrong',
+                    message: 'Email or password not match',
                 })
             }
         }
         else{
-            return res.status(401).json({
+            return res.status(404).json({
                 succes: false,
-                message: 'email or password wrong',
+                message: 'Email not found',
             })
         }
     })

@@ -7,14 +7,14 @@ exports.getAllUser = (id, callback) => {
 }
 
 exports.getUserByEmail = (email, callback) => {
-    const sql = `SELECT id,email,username,is_active,password FROM "users" WHERE "email" = $1`
+    const sql = `SELECT id,user_code,username,full_name,profile_picture,email,password,is_active FROM "users" WHERE "email" = $1`
     const value = [email]
     db.query(sql, value, callback)
 }
 
 exports.createUser = (data, callback = () => {}) => {
-    const sql = `INSERT INTO "users" (username, email, password, user_code) VALUES ($1, $2, $3, $4) RETURNING id, email, user_code`
-    const value =[data.username, data.email, data.password, data.userCode]
+    const sql = `INSERT INTO "users" (user_code, username, full_name, email, password) VALUES ($1, $2, $3, $4, $5) RETURNING id, user_code, username, full_name, profile_picture, email, is_active`
+    const value =[data.userCode, data.username, data.fullName, data.email, data.password]
     db.query(sql, value, function (err, result) {
         if(result) {
             callback(null, result);
@@ -34,7 +34,7 @@ exports.updateRefreshTokenUser = (dataRefreshToken, callback) => {
 }
 
 exports.getRefreshToken = (token, callback) => {
-    const sql = `SELECT id,email,username,is_active FROM "users" WHERE "refresh_token" = $1`
+    const sql = `SELECT id, user_code, username, full_name, profile_picture, email, is_active FROM "users" WHERE "refresh_token" = $1`
     const value = [token]
     db.query(sql, value, callback)
 }
@@ -48,6 +48,6 @@ exports.deleteRefreshToken = (id, callback) => {
 exports.getUserCode = (callback) => {
     const sql = `select user_code from users order by id desc limit 1`
     // console.log(callback)
-    db.query(sql, callback) ;
+    db.query(sql, callback)
 
 }
