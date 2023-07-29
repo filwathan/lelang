@@ -65,8 +65,12 @@ exports.getAllAuctionPostCode = (filter, callback) => {
     "start_date",
     "end_date",
     "tags",
-    "created_by"
-    FROM "auction_post" 
+    ap.created_by,
+    ap.created_at,
+    "full_name",
+    "profile_picture"
+    FROM "auction_post" as "ap"
+    JOIN "users" on users.user_code=ap.created_by
     WHERE "${filter.orderBy}" LIKE $3
     ORDER BY "title" ${filter.sort}
     LIMIT $1

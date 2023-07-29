@@ -1,13 +1,12 @@
 const db = require("../helpers/db.helper");
 
-
 exports.getAllCategories = (callback) => {
-    const sql = `SELECT "id", "category_code", "category_name", "category_desc" FROM "categories" WHERE "is_deleted" = 0 ORDER BY "category_name" ASC`;
+    const sql = `SELECT "id", "category_code", "category_name", "category_desc" FROM "categories" WHERE "is_deleted" = 0 AND "is_active"=1 ORDER BY "category_name" ASC`;
     db.query(sql, callback) ;
 }
 
 exports.getAllCategoriesCode = (callback) => {
-    const sql = `SELECT "category_code" FROM "categories" WHERE "is_deleted" = 0 ORDER BY "category_code" ASC`;
+    const sql = `SELECT "category_code" FROM "categories" WHERE "is_deleted" = 0 AND "is_active"=1 ORDER BY "category_code" ASC`;
     db.query(sql, callback) ;
 }
 
